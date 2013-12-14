@@ -1,0 +1,51 @@
+﻿.rowEnabled    {    background-color:#0ff;     }
+.rowHover   { background-color:#97F9BF;    }
+.tHeader  {   background-color:#f1f6fb;   }
+.ktable-filter {  float: right;   margin: -0.5em -0.6em -0.4em;  padding: 0.5em 0.2em 0.4em;   position: relative;    z-index: 1;}
+.popupContainer
+{
+    font-size:12px;font-family:inherit;
+    border:1px solid #DBDBDE; overflow:auto; padding:10px; border-radius: 0 0 4px 4px; background-color:#FFFFFF;box-shadow: 0 2px 2px 0 rgba(82, 90, 104, 0.2);    
+    display: block;
+}
+button.filter-button { background-color: #F3F3F4; border-color: #DBDBDE; color: #515967; margin: 0.5em 4% 0 0;  width: 46%; border-radius: 4px 4px 4px 4px;box-shadow: none;border-style: solid;  border-width: 1px; cursor:pointer;}
+.filter-button:hover {  background-color:#A6AFBE;border-color:#A6AFBE;   color:#263248;}
+SELECT.ktable-searchtype {  width:99%; margin-bottom:6px; margin-top:5px;  border:1px solid #DBDBDE;  font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif"; }
+.k-filter {  background-image: url('Images/filter.png');   background-position:3px; background-repeat: no-repeat;   width:20px; height:20px;float:left;  border:none;}
+.filter-selected
+{    background-image: url('Images/filter-selected.png');   background-position:3px; background-repeat: no-repeat;   width:20px; height:20px;float:left;
+   border:none;
+}
+.ktable-filter-validation-error {    border: 1px solid #f00;    background-color: #fee;}
+.filter-input
+{
+    border:1px solid #DBDBDE; 
+}
+a.ktable-sortHeader
+{
+/*display: block;*/
+    line-height: 18px;
+   /*margin: -0.5em -0.6em -0.4em;*/
+    min-height: 18px;
+    padding: 0.5em 0.6em 0.4em;cursor: pointer;
+    outline: 0 none;
+    text-decoration: none; 
+}
+.ktable-sort {     width:20px; height:20px; border:none;
+vertical-align: text-top;position: static;display: inline-block;
+width: 16px;
+height: 16px;
+overflow: hidden;line-height: 0;
+text-indent: -3333px;
+text-align: center;
+}
+.ascsort
+{
+background-image: url('Images/sort-asc.png');   background-position:3px; background-repeat: no-repeat;
+
+}
+.descsort
+{
+background-image: url('Images/sort-desc.png');   background-position:3px; background-repeat: no-repeat;
+	
+}

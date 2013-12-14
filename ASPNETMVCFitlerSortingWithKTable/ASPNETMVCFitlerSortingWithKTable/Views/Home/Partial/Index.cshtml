@@ -1,0 +1,12 @@
+﻿@model ASPNETMVCFitlerSortingWithKTable.Models.CustomerListViewModel
+@{
+    Layout=null;
+}    
+@foreach(var customer in Model.Customers)
+{
+    <tr>
+        <td>@customer.FirstName</td>           
+        <td>@customer.City</td>
+        <td>@customer.RegistrationDate.ToShortDateString()</td>
+    </tr>
+}    

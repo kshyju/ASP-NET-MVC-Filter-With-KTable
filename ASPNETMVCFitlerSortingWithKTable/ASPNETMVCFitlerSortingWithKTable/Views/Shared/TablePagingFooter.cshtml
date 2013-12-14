@@ -1,0 +1,22 @@
+﻿@model ASPNETMVCFitlerSortingWithKTable.Models.PagingDetails
+@{
+    string baseurl = ViewData["baseurl"].ToString();
+}
+<div class="pagingFooterLeft">
+   Total @Model.TotalRecords @(Model.TotalRecords> 1 ? "Records in" : "Record in") @Model.TotalPages @(Model.TotalPages>1? "pages":"page")
+</div>
+<div class="pagingFooterRight">
+  @for (int i = 1; i <= Model.TotalPages; i++)
+  {        
+      if (Model.CurrentPage == i)
+      { 
+        <span class="page-number currentPage">@i.ToString()</span>        
+      }
+      else
+      {
+        <a class="gridPageNumber" title="@i.ToString()" href="@baseurl&page=@i.ToString()">
+            <span class="page-number">@i.ToString()</span>
+        </a>
+      }
+  }            
+</div>

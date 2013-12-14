@@ -1,0 +1,92 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.bodyContainer
+{
+	padding:10px;
+}
+
+table
+{
+	border-collapse:collapse;
+	border-spacing:0;
+	border:1px solid gray;
+	width:99%;
+	
+}
+	table tr
+	{
+		border-bottom:1px solid gray;
+	}
+	table th, table td
+	{
+		padding:5px; text-align:left;
+	}
+	.divtblFooter {
+    padding:5px;
+}
+.page-number { border: 1px solid #F7F7F7;color: #38638C;display: block;float: left;  margin-right: 3px;padding: 1px 5px 1px;text-decoration: none;font-size:11px; background-color:#EDEDED; cursor:pointer;               }
+.pagingFooter {    background-color:#F5F5F5;  float:right;}
+.pagingFooterRight {     float:right;width:auto; margin-right: 10px;}
+.pagingFooterLeft {  float:left; width:45%; color: #6E6E6E; }
+.availableChampions {    padding:4px; padding-left:8px;  color:#1691D3; }
+.currentPage {  background-color:#FFFFFF; cursor:default; }
+.divtblFooter {   min-height:20px;    padding:10px; }

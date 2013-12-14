@@ -1,0 +1,85 @@
+﻿@model ASPNETMVCFitlerSortingWithKTable.Models.CustomerListViewModel
+<h2>Customers</h2>
+<div>
+<table id="tblList">
+    <tr>
+        <th class="filterable">First Name</th>      
+        <th class="filterable">City</th>
+        <th class="filterable"  datatype="date">Registration Date</th>
+    </tr>    
+    @foreach(var customer in Model.Customers)
+    {
+        <tr>
+            <td>@customer.FirstName</td>           
+            <td>@customer.City</td>
+            <td>@customer.RegistrationDate.ToShortDateString()</td>
+        </tr>
+    }    
+</table>
+</div>
+<div id="tblFooter" class="divtblFooter">
+   @Html.Partial("TablePagingFooter", Model.PagingDetails, new ViewDataDictionary { {"baseurl",Url.Action("Index","Home")+"?c"}})
+</div>
+<input type="hidden" id="tblMeta" data-pagenumber="1" data-lastevent="none" />
+<script type="text/javascript">
+    $(function () {
+        $("table").ktable({            
+            filterable: {
+                filterableColumnClassName: 'filterable',
+                callBackOnFilter: function (item) { $("#tblMeta").data("lastevent", "filter"); ApplyFilter("filter") },
+                callBackOnClear: function (item) { $("#tblMeta").data("lastevent", "filter"); ApplyFilter("filter") }
+            }
+                        , sortable: {
+                            callBackOnAscending: function (a) {
+                                $("#tblMeta").data("lastevent", "sort");
+                                ApplyFilter("sort");
+                            }
+                        }
+        });
+        $(document).on("click", "a.gridPageNumber", function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            var lastEvent = $("#tblMeta").data("lastevent");
+            ApplyFilter(lastEvent, url);
+        });
+
+    });
+
+    function ApplyFilter(source, url) {
+
+        var sortColumn = "";
+        var sortOrder = "";
+        var activeSort = $("a.sort-active");
+        sortColumn = activeSort.attr("for");
+        sortOrder = activeSort.find("span.ktable-sort").attr("sortorder");
+
+        var searchObj = new Object();
+        searchObj.Filters = [];
+        $("form.ktableform").each(function () {
+            var _form = $(this);
+            var filterVM = { SearchType: _form.find("SELECT.ktable-searchtype").val(), ColumnName: _form.attr("for"), SearchText: _form.find("input.filter-input").val() };
+            if (_form.attr("data-type") == "date") {
+                filterVM.StartDate = _form.find("input.kTableDatePicker").first().val();
+                filterVM.EndDate = _form.find("input.kTableDatePicker").eq(1).val();
+            }
+            searchObj.Filters.push(filterVM);
+        });
+        searchObj.SortColumnName = sortColumn;
+        searchObj.SortType = sortOrder;
+        searchObj.LastEvent = source;
+
+        var listUrl = "@Url.Action("Index","Home")";
+        if (url != undefined)
+            listUrl = url;
+
+        $.ajax({
+            type: "POST", url: listUrl,
+            contentType: "application/json",
+            data: JSON.stringify(searchObj)
+        }).done(function (data) {
+            $("#tblList tr:gt(0)").remove();            
+            $('#tblList').append(data.ListingMarkup);
+            $("#tblFooter").html(data.PagingMarkup);
+        });
+    }
+</script>
